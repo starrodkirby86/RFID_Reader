@@ -95,7 +95,7 @@ void ReadSerial(String &ReadTagString)
 
       } 
       bytesread = 0;
-      TagCode="";
+      TagCode=""; 
     } 
   } 
 }
