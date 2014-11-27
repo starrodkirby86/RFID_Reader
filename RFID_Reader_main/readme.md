@@ -1,4 +1,5 @@
 # **Table of Context**
+
 ## `ListNode` struct
 
 - `T` `ListNode::data` - The object data
@@ -40,31 +41,39 @@
 - **protected** `ListNode<T>` `LinkedList<T>::*last` - Holds the last node of the list.
 
 - **protected** `ListNode<T>*` `LinkedList<T>::getNode(int index)` - Returns the `index` node of the list.
+
 ## `ID` Class
+
 ### Data Types
-	- `String IDNumber` - ID number
-	- `String IDOwner`  - The Owner of the ID
-	### Class methods
-	#### Constructors
-	- `ID()` 										- Default Constructor
-	- `ID(String arg_IDNumber, String arg_IDOwner)` - Constructor
-	- `ID(String arg_IDNumber)` 					- Another Constructor only with ID 
-	#### Functions
-	- `String getID()`											- Return ID
-	- `String getOwner()`										- Return Owner
-	- `void editID(String arg_IDNumber, String arg_IDOwner)`	- Edit ID/ Owner
-	- `bool isIDBlank()`										- Check to see if ID is blank
-	- `bool isOwnerBlank()`										- Check to see name(Owner) is blank
-	- `void printID(HardwareSerial *serIn)` 					- Print ID/ Owner 
+- `String IDNumber` - ID number
+- `String IDOwner`  - The Owner of the ID
+### Class methods
+
+#### Constructors
+- `ID()` 										- Default Constructor
+- `ID(String arg_IDNumber, String arg_IDOwner)` - Constructor
+- `ID(String arg_IDNumber)` 					- Another Constructor only with ID 
+
+#### Functions
+- `String getID()`											- Return ID
+- `String getOwner()`										- Return Owner
+- `void editID(String arg_IDNumber, String arg_IDOwner)`	- Edit ID/ Owner
+- `bool isIDBlank()`										- Check to see if ID is blank
+- `bool isOwnerBlank()`										- Check to see name(Owner) is blank
+- `void printID(HardwareSerial *serIn)` 					- Print ID/ Owner 
 				
 	
 ## `IDDatabase` Class
+
 ### Data Types
 - `LinkedList<ID> database` - Importing ID class to template-based linked list
 - `HardwareSerial *_Serial` - Serial/ baud rate of 
+
 ### Class Methods
+
 #### Constructor
 - `IDDatabase(HardwareSerial *serIn)` 					- Serial initialization
+
 #### Functions	
 - `void addID(String arg_IDNumber, String arg_IDOwner)` 							- Push ID/Owner
 - `ID eraseID(String arg_IDNumber)` 												- Erasing by iteration 
