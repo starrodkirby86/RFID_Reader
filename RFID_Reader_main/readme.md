@@ -44,13 +44,11 @@
 ### Data Types
 	- `String IDNumber` - ID number
 	- `String IDOwner`  - The Owner of the ID
-	
 	### Class methods
 	#### Constructors
 	- `ID()` 										- Default Constructor
 	- `ID(String arg_IDNumber, String arg_IDOwner)` - Constructor
 	- `ID(String arg_IDNumber)` 					- Another Constructor only with ID 
-			
 	#### Functions
 	- `String getID()`											- Return ID
 	- `String getOwner()`										- Return Owner
@@ -60,22 +58,21 @@
 	- `void printID(HardwareSerial *serIn)` 					- Print ID/ Owner 
 				
 	
-## `IDDatabase`
+## `IDDatabase` Class
 ### Data Types
-	- `LinkedList<ID> database` - Importing ID class to template-based linked list
-	- `HardwareSerial *_Serial` - Serial/ baud rate of 
-		
-	### Class Methods
-	#### Constructor
-	- `IDDatabase(HardwareSerial *serIn)` 					- Serial initialization
-	#### Functions	
-	- `void addID(String arg_IDNumber, String arg_IDOwner)` 							- Push ID/Owner
-	- `ID eraseID(String arg_IDNumber)` 												- Erasing by iteration 
-	- `ID eraseID(int arg_index)`														- Erasing by index
-	- `void editID(string arg_searchCriteria, string arg_IDNumber, string arg_IDOwner)` - Edit ID/Owner
-	- `int getSize()`																	- Size of Database
-	- `bool isEmpty()`																	- Bool size
-	- `void print()` 																  	- Printing All users
+- `LinkedList<ID> database` - Importing ID class to template-based linked list
+- `HardwareSerial *_Serial` - Serial/ baud rate of 
+### Class Methods
+#### Constructor
+- `IDDatabase(HardwareSerial *serIn)` 					- Serial initialization
+#### Functions	
+- `void addID(String arg_IDNumber, String arg_IDOwner)` 							- Push ID/Owner
+- `ID eraseID(String arg_IDNumber)` 												- Erasing by iteration 
+- `ID eraseID(int arg_index)`														- Erasing by index
+- `void editID(string arg_searchCriteria, string arg_IDNumber, string arg_IDOwner)` - Edit ID/Owner
+- `int getSize()`																	- Size of Database
+- `bool isEmpty()`																	- Bool size
+- `void print()` 																  	- Printing All users
 		
 		
 		
