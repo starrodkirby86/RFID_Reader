@@ -1,5 +1,3 @@
-#include <IDDatabase.h>
-
 /*  
   IEEE_RFID_Reader
   
@@ -56,6 +54,17 @@ void setup()
   
   ID pikachu("1A3C9D00BB","Barack Obama");
   pikachu.printID(&Serial);
+  
+  IDDatabase database(&Serial);
+  database.addID("56U8M9A3XY","Switches Be Trippin");
+  database.addID("11112222M4","Mister Rogers");
+  database.addID("MK69CC22AB","Carl Sagan");
+  database.addID("9302573823","Austin Powers");
+  database.print();
+  Serial.println("Removing Mister Rogers.");
+  database.eraseID("11112222M4");
+  database.print();
+  
 }
 
 void loop()
