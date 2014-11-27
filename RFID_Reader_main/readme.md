@@ -42,7 +42,7 @@
 
 - **protected** `ListNode<T>*` `LinkedList<T>::getNode(int index)` - Returns the `index` node of the list.
 
-## `ID` Class
+## `ID` class
 
 ### Data Types
 - `String IDNumber` - ID number
@@ -64,11 +64,11 @@
 - `void printID(HardwareSerial *serIn)` 					- Print ID/ Owner 
 				
 	
-## `IDDatabase` Class
+## `IDDatabase` class
 
 ### Data Types
 - `LinkedList<ID> database` - Importing ID class to template-based linked list
-- `HardwareSerial *_Serial` - Serial/ baud rate of 
+- `HardwareSerial *_Serial` - Serial/ baud rate of Arduino
 
 ### Class Methods
 
