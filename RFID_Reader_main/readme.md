@@ -47,6 +47,7 @@
 ### Data Types
 - `String IDNumber` - ID number
 - `String IDOwner`  - The Owner of the ID
+
 ### Class methods
 
 #### Constructors
