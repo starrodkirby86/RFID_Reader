@@ -3,7 +3,6 @@
    **List of Functions**
    ```Arduino
    void LEDColor(int localColor, int duration)
-   
       - Select Local Color integer and display indicative value
       - localColor Break down
         - RGB_R - Red/0
