@@ -110,7 +110,7 @@ void ReadSerial(String &ReadTagString)
 void LEDColor(int localColor, int duration)
 {
   bool led_f= false;
-
+  
   if(localColor== 0)
   {
     // LED Color = Red
@@ -132,27 +132,27 @@ void LEDColor(int localColor, int duration)
   else if(localColor== 2)
   {
     // LED Color = Blue      
-    digitalWrite(Rpin, LOW);
-    digitalWrite(Gpin, LOW);
-    digitalWrite(Bpin, HIGH);
+    digitalWrite(RPin, LOW);
+    digitalWrite(GPin, LOW);
+    digitalWrite(BPin, HIGH);
     Serial.println("LED Color: Blue");
     led_f= true;
   }
   else if(localColor== 3)
   {
     // LED Color = Orange
-    analogWrite(Rpin, 255);
-    analogWrite(Gpin, 255);
-    analogWrite(Bpin, 51);
+    analogWrite(RPin, 255);
+    analogWrite(GPin, 30);
+    analogWrite(BPin, 0);
     Serial.println("LED Color: Orange");
     led_f= true;
   }
   else if(localColor== 4)
   {
     // LED Color = Yellow
-    analogWrite(Rpin, 255);
-    analogWrite(Gpin, 153);
-    analogWrite(Bpin, 51);
+    analogWrite(RPin, 255);
+    analogWrite(GPin, 255);
+    analogWrite(BPin, 0);
     Serial.println("LED Color: Yellow");
     led_f= true;
   }
@@ -166,14 +166,14 @@ void LEDColor(int localColor, int duration)
   {
     Serial.print("Delay is set for ");
     Serial.print(duration);
-    Serial.print(" ms.");
+    Serial.println(" ms.");
     delay(duration);
   }     
 }
 // Color intensity Red, Green, Blue, Duration of light
 void LEDintensity(int R, int G, int B, int D)
 {
-  if( (R<0 && R>255) || (G<0 && G>255) || (B<0 && B> 255) )
+  if( (R<0 || R>255) || (G<0 || G>255) || (B<0 || B> 255) )
   {
     Serial.println("Error in one of RGB Value.");
     return;
@@ -185,7 +185,56 @@ void LEDintensity(int R, int G, int B, int D)
     analogWrite(BPin, B);
   }
   Serial.print("Delay is set for ");
-  Serial.print(duration);
-  Serial.print(" ms.");
-  delay(duration);
+  Serial.print(D);
+  Serial.println(" ms.");
+  delay(D);
+}
+
+void LEDoff(int Duration)
+{
+  Serial.println("LED light is off."); 
+  digitalWrite(RPin, LOW);
+  digitalWrite(GPin, LOW);
+  digitalWrite(BPin, LOW);
+  
+  Serial.print("Delay is set for ");
+  Serial.print(Duration);
+  Serial.println(" ms.");
+  
+  delay(Duration);
+  
+}
+
+void readRGB()
+{
+  readR();
+  readG();
+  readB();
+}
+
+void readR()
+{
+  int val= 0;
+  Serial.print("R- ");
+  val= digitalRead(RPin);
+  Serial.print(val);
+  Serial.print(" ");
+}
+
+void readG()
+{
+  int val= 0;
+  Serial.print("G- ");
+  val= digitalRead(GPin);
+  Serial.print(val);
+  Serial.print(" ");
+}
+
+void readB()
+{
+  int val= 0;
+  Serial.print("B- ");
+  val= digitalRead(BPin);
+  Serial.print(val);
+  Serial.print(" ");
 }
