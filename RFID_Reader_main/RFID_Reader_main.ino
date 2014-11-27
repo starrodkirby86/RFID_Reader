@@ -24,11 +24,38 @@
   
 */
 
+// ==============================================
+// INCLUDE AND CONSTANT DEFINITIONS
+// ============================================== 
+
 #include <SoftwareSerial.h>
 #include "IDDatabase.h"
 
+// Parallax RFID Reader
+#define RFIDEnablePin 2        // Pin for reading
+#define RFIDSerialRate 2400    // Port Speed
+
+// SoftwareSerial Library
+#define RxPin 5                // Pin for reading data from the Reader
+#define TxPin 4                // Pin for writing data to the Reader (unused)
+
+// LED Pins
+#define RPin 11
+#define GPin 10
+#define BPin 9
+#define RGB_R 0
+#define RGB_G 1
+#define RGB_B 2
+#define RGB_O 3
+#define RGB_Y 4
+
 void setup()
 {
+  Serial.begin(9600);  // Create serial, baud rate is 9600bps
+  Serial.println("Get this started!");
+  
+  ID pikachu("1A3C9D00BB","Barack Obama");
+  pikachu.printID(&Serial);
 }
 
 void loop()

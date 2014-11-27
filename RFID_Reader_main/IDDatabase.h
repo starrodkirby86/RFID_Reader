@@ -27,6 +27,8 @@ class ID
         private:
             String IDNumber;    // The ID Number.           e.g. 06008F6747
             String IDOwner;     // The Owner of the ID.     e.g. Kim Jong Un
+            
+        public:
        
     // ==============================================
     // CLASS CONSTRUCTORS
@@ -59,8 +61,6 @@ class ID
     // ==============================================
     // FUNCTIONS
     // ============================================== 
-    
-        public:
     
     // ==============================================
     // GET FUNCTIONS
@@ -100,11 +100,10 @@ class ID
                 _Serial->println("ERROR: Null ID or Owner.");
             }
         }
-        
-        ~ID();
     
 };
 
+/*
 class IDDatabase
 {
     // This is the class for a database of IDs.
@@ -117,9 +116,12 @@ class IDDatabase
         vector<ID> database;
         HardwareSerial *_Serial;
     
+    public:
+    
     // ==============================================
     // CLASS CONSTRUCTORS
     // ==============================================
+    
         IDDatabase(HardwareSerial *serIn)
         {
             // Constructor a database.
@@ -130,8 +132,16 @@ class IDDatabase
     // ==============================================
     // FUNCTIONS
     // ==============================================     
-    public:
+    
+        void addID(String arg_IDNumber, String arg_IDOwner)
+        {
+            // Adds an ID into the database.
+            // It's up to your responsibility to make sure that
+            // the content added in isn't a duplicate or anything funny...
+            
+        }
     
 }
+*/
 
 #endif
