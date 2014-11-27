@@ -161,7 +161,7 @@ class IDDatabase
             
         }
         
-        ID eraseID(String arg_IDNumber)
+        ID eraseID(String arg_searchID)
         {
             // Erases an ID from the database.
             // The erased ID will be returned. It's up to the user
@@ -176,20 +176,20 @@ class IDDatabase
             }   
             else
             {
-                for(int i = 0; i < getSize(); ++i)
+            
+                int searchIndex = find(arg_searchID);
+                if(searchIndex != -1)
+                    return(database.remove(searchIndex));
+                else
                 {
-                    // Search case? Is this iteration the ID we're removing?
-                    if(arg_IDNumber == (database.get(i)).getID())
-                        {
-                            return(database.remove(i));
-                        }
+                    // Search was unsuccessful at this case
+                    _Serial->println("ERROR: ID doesn't exist. Did you spell it right?");
+                    ID errorID("ERROR_02","SEARCH NOT SUCCESSFUL");
+                    return(errorID);
                 }
             }
             
-            // Search was unsuccessful at this case
-            _Serial->println("ERROR: ID doesn't exist. Did you spell it right?");
-            ID errorID("ERROR_02","SEARCH NOT SUCCESSFUL");
-            return(errorID);
+
         }
         
         ID eraseID(int arg_index)
@@ -204,7 +204,7 @@ class IDDatabase
             // NOTE: For mass cleaning,
             // just let it pop the head.
             
-            if(arg_index >= getSize() || arg_index < 0) // Out of range check
+            if(isInRange(arg_index)) // Out of range check
             {
                 _Serial->println("ERROR: Index out of range.");
                 ID errorID("ERROR_01","OUT_OF_RANGE");
@@ -216,17 +216,45 @@ class IDDatabase
             }
         }
         
-        void editID(string arg_searchCriteria, string arg_IDNumber, string arg_IDOwner)
+        void editID(String arg_searchID, String arg_IDNumber, String arg_IDOwner)
         {
             // Edits an ID in the database.
             // Searches for the ID to exist, then modifies it.
             
-            for(int i = 0; i < getSize(); ++i)
+            int searchIndex = find(arg_searchID);
+            if(searchIndex != -1)
             {
-                if(
+                database.get(searchIndex).editID(arg_IDNumber,arg_IDOwner);   // What does it do when found?
+                return;
             }
+            else
+                _Serial->println("ERROR: Cannot find ID. Did you spell it correctly?");
+
         }
         
+    // ==============================================
+    // COMPARATOR FUNCTIONS
+    // ============================================== 
+    
+        // Use this for codes, it's easier and more intuitive
+        // to read at a glance (at least for simple Boolean cases)
+        bool isThere(String arg_searchID)   { return (find(arg_searchID) != -1);  }        
+        bool isInRange(int arg_index) { return (arg_index >= getSize() || arg_index < 0); }
+    
+        int find(String arg_searchID)
+        {
+            // Finds the index of an ID in the database.
+            // Search criteria is based off of an ID string.
+            
+            for(int i = 0; i < getSize(); ++i)
+            {
+                if(arg_searchID == (database.get(i)).getID())    // Checks if found
+                    return(i);  // Returns the corresponding index
+            }
+            
+            // Error case
+            return(-1);
+        }
         
     // ==============================================
     // GET FUNCTIONS
@@ -234,6 +262,29 @@ class IDDatabase
     
         int getSize()       { return database.size() ; }
         bool isEmpty()      { return (getSize() == 0); }
+        
+        String getID(int arg_index)
+        {
+            if(isInRange(arg_index))
+                return (database.get(arg_index)).getID();
+            else
+            {
+                _Serial->println("ERROR: Index out of range.");
+                return "OUT OF RANGE";
+            }
+        }
+        
+        String getOwner(int arg_index)
+        {
+            if(isInRange(arg_index))
+                return (database.get(arg_index)).getOwner();
+            else
+            {
+                _Serial->println("ERROR: Index out of range.");
+                return "OUT OF RANGE";
+            }
+        }
+        
  
     // ==============================================
     // OTHER FUNCTIONS
