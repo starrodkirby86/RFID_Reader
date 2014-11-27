@@ -2,7 +2,9 @@
 
    **List of Functions**
   
-    `void LEDColor(int localColor, int duration)`
+    ```arduino
+    void LEDColor(int localColor, int duration)
+    ```
       - Select Local Color integer and display indicative value
       - localColor Break down
         - RGB_R - Red/0
