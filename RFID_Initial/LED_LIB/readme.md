@@ -11,8 +11,8 @@
    
    In
    void setup(),
-   foo.initial(int Red_pin, int Green_pin, int Blue_pin);
    foo._begin(&Serial);
+   foo.initial(int Red_pin, int Green_pin, int Blue_pin);
    ```
   
    **List of Functions**
