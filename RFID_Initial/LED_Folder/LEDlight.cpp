@@ -57,5 +57,4 @@ class LEDlight
         const static int RGB_Y= 4;
 };
 
-
 #endif // LEDLIGHT_H_INCLUDED
