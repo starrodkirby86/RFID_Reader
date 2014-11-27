@@ -22,3 +22,5 @@
      void LEDoff(int Duration)
       - Off for set duration, Duration, in milliseconds (ms)
       
+     void readRGB()
+      - Read digital value of R,G,B pins.
