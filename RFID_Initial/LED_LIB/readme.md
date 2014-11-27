@@ -1,9 +1,16 @@
 # **LED Library**
-   ** How to do it**
+
+   **Component**
+   ```
+   3 way RGB LED  
+   ```
+  
+   **How to Do It**
    ```Arduino
-   LEDlight foo; // before setup
+   LEDlight foo; // before setup initializing LED
    
-   in setup.
+   In
+   void setup(),
    foo.initial(int Red_pin, int Green_pin, int Blue_pin);
    foo._begin(&Serial);
    ```
