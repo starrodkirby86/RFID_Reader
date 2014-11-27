@@ -45,13 +45,13 @@
 	- `String IDNumber` - ID number
 	- `String IDOwner`  - The Owner of the ID
 	
-### Class methods
-#### Constructors
+	### Class methods
+	#### Constructors
 	- `ID()` 										- Default Constructor
 	- `ID(String arg_IDNumber, String arg_IDOwner)` - Constructor
 	- `ID(String arg_IDNumber)` 					- Another Constructor only with ID 
 			
-#### Functions
+	#### Functions
 	- `String getID()`											- Return ID
 	- `String getOwner()`										- Return Owner
 	- `void editID(String arg_IDNumber, String arg_IDOwner)`	- Edit ID/ Owner
@@ -65,10 +65,10 @@
 	- `LinkedList<ID> database` - Importing ID class to template-based linked list
 	- `HardwareSerial *_Serial` - Serial/ baud rate of 
 		
-### Class Methods
-#### Constructor
+	### Class Methods
+	#### Constructor
 	- `IDDatabase(HardwareSerial *serIn)` 					- Serial initialization
-#### Functions	
+	#### Functions	
 	- `void addID(String arg_IDNumber, String arg_IDOwner)` 							- Push ID/Owner
 	- `ID eraseID(String arg_IDNumber)` 												- Erasing by iteration 
 	- `ID eraseID(int arg_index)`														- Erasing by index
