@@ -224,7 +224,8 @@ class IDDatabase
             int searchIndex = find(arg_searchID);
             if(searchIndex != -1)
             {
-                database.get(searchIndex).editID(arg_IDNumber,arg_IDOwner);   // What does it do when found?
+                ID newID(arg_IDNumber,arg_IDOwner);
+                database.set(searchIndex,newID);   // What does it do when found?
                 return;
             }
             else
@@ -239,7 +240,7 @@ class IDDatabase
         // Use this for codes, it's easier and more intuitive
         // to read at a glance (at least for simple Boolean cases)
         bool isThere(String arg_searchID)   { return (find(arg_searchID) != -1);  }        
-        bool isInRange(int arg_index) { return (arg_index >= getSize() || arg_index < 0); }
+        bool isInRange(int arg_index) { return (arg_index <= getSize() || arg_index < 0); }
     
         int find(String arg_searchID)
         {

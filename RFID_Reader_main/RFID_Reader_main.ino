@@ -1,10 +1,10 @@
 /*  
-  IEEE_RFID_Reader
+  RFID_Reader
   
   ID Card scanning system intended for system logins.
   
   Version:
-    0.01
+    0.05
   
   Authors:
     - Watson Tungjunyatham
@@ -15,7 +15,7 @@
   For all changes, details, bugs, grumbles, and everything else,
   please check out our very own (and shiny!) Github.
   
-  https://github.com/starrodkirby86/IEEE_RFID_Reader
+  https://github.com/starrodkirby86/RFID_Reader
   
   We want YOU to help! Unless you're a Somalian pirate. Just
   kidding, we're an Equal Opportunities employer.
@@ -52,10 +52,14 @@ void setup()
   Serial.begin(9600);  // Create serial, baud rate is 9600bps
   Serial.println("Get this started!");
   
+  Serial.println(availableMemory());
+  
   Serial.println("ID Test");
   Serial.println("");
   ID pikachu("1A3C9D00BB","Barack Obama");
   pikachu.printID(&Serial);
+
+  Serial.println(availableMemory());
   
   Serial.println("");
   Serial.println("Database Test");
@@ -65,20 +69,27 @@ void setup()
   database.addID("56U8M9A3XY","Switches Be Trippin");
   database.addID("11112222M4","Mister Rogers");
   database.addID("MK69CC22AB","Carl Sagan");
-  database.addID("9302573823","Austin Powers");
+  database.addID("A302573823","Austin Powers");
+  database.addID("N3UUXXZA30","Marisa Kirisame");
   database.print();
+
+  Serial.println(availableMemory());
   
   Serial.println("");
   Serial.println("Removing Mister Rogers.");
   Serial.println("");
   database.eraseID("11112222M4");
   database.print();
-  
+
+  Serial.println(availableMemory());
+    
   Serial.println("");
   Serial.println("Editing Carl Sagan.");
   Serial.println("");
   database.editID("MK69CC22AB","AAAABBBBCC","Neil deGrasse Tyson");
   database.print();
+  
+  Serial.println(availableMemory());
 
   Serial.println("");
   Serial.println("Adding more IDs.");
@@ -87,7 +98,13 @@ void setup()
   database.addID("24601A1862","Jean Valjean");
   database.addID("JJJAAAEEEH","Malcolm X");
   database.addID("HEEEAAAJJJ","X mloclaM");
-  database.print();  
+  database.addID("lol","KILL");
+  database.addID("bye","BYE");
+  database.print();
+  
+  Serial.println(availableMemory());
+  
+/*  
   
   Serial.println("");
   Serial.println("Does Donkey Kong exist?");
@@ -122,7 +139,20 @@ void setup()
   Serial.print(database.getSize());
   Serial.print(" elements long!");
   Serial.println("");
+  */
 
+}
+
+int availableMemory() {
+  int size = 1024; // Use 2048 with ATmega328
+  byte *buf;
+
+  while ((buf = (byte *) malloc(--size)) == NULL)
+    ;
+
+  free(buf);
+
+  return size;
 }
 
 void loop()
